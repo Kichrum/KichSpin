@@ -1,10 +1,95 @@
 /*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : May 9, 2014, 5:04:26 PM
     Author     : kichrum
 */
 
+.table {
+    background-image: url("../images/BG.png");
+    height: 536px;
+    width: 960px;
+}
+.symbols {
+    display: none;
+}
+.table .symbols {
+    display: block;
+}
+.symbol {
+    width: 235px;
+    height: 155px;
+    margin: 20px 0;
+}
+.symbol1 {
+    background-image: url("../images/SYM1.png");
+}
+.symbol2 {
+    background-image: url("../images/SYM6.png");
+}
+.symbol3 {
+    background-image: url("../images/SYM3.png");
+}
+.symbol4 {
+    background-image: url("../images/SYM4.png");
+}
+.symbol5 {
+    background-image: url("../images/SYM5.png");
+}
+.button {
+    width: 98px;
+    height: 98px;
+    background-image: url("../images/BTN_Spin.png");
+    display: block;
+    margin: 218px 0 0 37px;
+}
+.button.disabled {
+    background-image: url("../images/BTN_Spin_d.png");
+}
+.cols {
+    margin-left: 71px;
+    float: left;
+}
+.col:first-child {
+    margin-left: 0;
+}
+.col {
+    height: 536px;
+    float: left;
+    width: 232px;
+    margin-left: 10px;
+    overflow: hidden;
+}
+.actions {
+    float: left;
+}
+.win {
+    margin: 70px 0 0 20px;
+    font: bold 26px "Purisa";
+    color: rgb(129, 255, 111);
+    float: left;
+    width: 152px;
+}
+.lines {
+    position: absolute;
+}
+.line {
+    background-image: url("../images/Bet_Line.png");
+    background-repeat: no-repeat;
+    width: 770px;
+    height: 16px;
+    display: none;
+}
+.line1, .line2, .line3 {
+    margin-top: 93px;
+    background-size: 716px 16px;
+}
+.line2, .line3 {
+    margin-top: 156px;
+}
+.line4 {
+    -webkit-transform: rotate(37deg);
+    margin-top: -176px;
+}
+.line5 {
+    -webkit-transform: rotate(-37deg);
+    margin-top: -13px;
+    margin-left: -42px;
+}
