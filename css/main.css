@@ -10,9 +10,6 @@
 .symbols {
     display: none;
 }
-.table .symbols {
-    display: block;
-}
 .symbol {
     width: 235px;
     height: 155px;
@@ -46,6 +43,7 @@
 .cols {
     margin-left: 71px;
     float: left;
+    overflow: hidden;
 }
 .col:first-child {
     margin-left: 0;
@@ -55,7 +53,6 @@
     float: left;
     width: 232px;
     margin-left: 10px;
-    overflow: hidden;
 }
 .actions {
     float: left;
