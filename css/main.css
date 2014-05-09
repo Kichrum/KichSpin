@@ -43,16 +43,16 @@
 .cols {
     margin-left: 71px;
     float: left;
+    height: 536px;
     overflow: hidden;
 }
 .col:first-child {
     margin-left: 0;
 }
 .col {
-    height: 536px;
     float: left;
-    width: 232px;
-    margin-left: 10px;
+    width: 235px;
+    margin-left: 6px;
 }
 .actions {
     float: left;
