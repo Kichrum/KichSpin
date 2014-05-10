@@ -2,8 +2,17 @@
     Author     : kichrum
 */
 
+@font-face {
+    font-family: 'Purisa';
+    src: url('../fonts/Purisa.eot');
+    src: local('Purisa'),
+         url('../fonts/Purisa.ttf') format('truetype');
+}
 body {
     background: rgb(10, 118, 255);
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
 }
 .table {
     background-image: url("../images/BG.png");
@@ -41,11 +50,15 @@ body {
     width: 98px;
     height: 98px;
     background-image: url("../images/BTN_Spin.png");
+    background-repeat: no-repeat;
     display: block;
-    margin: 218px 0 0 36px;
+    margin: 219px 0 0 37px;
+    outline: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 .button.disabled {
     background-image: url("../images/BTN_Spin_d.png");
+    cursor: default;
 }
 .cols {
     margin-left: 71px;

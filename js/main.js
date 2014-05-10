@@ -12,7 +12,19 @@ $('document').ready(function() {
         }
     });
     $('.score').text(20);
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        fillInWindow();
+        $(window).on('resize', fillInWindow);
+    }
 });
+
+var fillInWindow = function() {
+    var $table = $('.table');
+    var widthScale = $(window).width() / $table.width();
+    var heightScale = $(window).height() / $table.height();
+    var scale = Math.min(heightScale, widthScale);
+    $table.css('zoom', scale);
+};
 
 var shuffle = function(o) {
     for (var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
@@ -71,6 +83,9 @@ var animateWin = function(winSymbols, score) {
     $('.score').animate({fontSize: '150%'}, 200, function() {
         $(this).text(score)
     }).animate({fontSize: '100%'}, 200);
+    if(winLinesClasses.length) {
+        $('.win-audio').get(0).play();
+    }
     if (score > 0) {
         setTimeout(switchButton, winLinesClasses.length ? 2200 : 200);
     }
@@ -122,6 +137,7 @@ var spin = function(e) {
     if ($('.button').hasClass('disabled')) {
         return false;
     }
+    $('.spin-audio').get(0).play();
     switchButton();
     $('.line').fadeOut(200);
     fillColumns();
