@@ -2,11 +2,17 @@
     Author     : kichrum
 */
 
+body {
+    background: rgb(10, 118, 255);
+}
 .table {
     background-image: url("../images/BG.png");
     height: 536px;
     width: 960px;
     font: bold 26px "Purisa";
+    margin: 0 auto;
+    border: 2px solid rgb(37, 117, 11);
+    border-radius: 30px;
 }
 .symbols {
     display: none;
