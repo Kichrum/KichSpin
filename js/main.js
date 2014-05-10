@@ -68,12 +68,14 @@ var animateWin = function(winSymbols, score) {
         $lines.fadeTo(200, 0.1).fadeTo(200, 1.0);
         $symbols.fadeTo(200, 0.1).fadeTo(200, 1.0);
     }
-    $('.score').animate({fontSize: '150%'}, "slow", function() {
+    $('.score').animate({fontSize: '150%'}, 200, function() {
         $(this).text(score)
-    }).animate({fontSize: '100%'}, "slow");
-    if (score < 1) {
-        switchButton();
-        $('.topup').fadeIn(200);
+    }).animate({fontSize: '100%'}, 200);
+    if (score > 0) {
+        setTimeout(switchButton, winLinesClasses.length ? 2200 : 200);
+    }
+    else {
+        $('.topup').fadeIn(500);
     }
 };
 
@@ -124,5 +126,4 @@ var spin = function(e) {
     $('.line').fadeOut(200);
     fillColumns();
     calculateScore();
-    setTimeout(switchButton, 3000);
 };

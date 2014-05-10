@@ -65,6 +65,9 @@
     width: 152px;
     vertical-align: top;
     text-align: center;
+    border-radius: 25px;
+    background: rgba(0, 0, 0, 0.3);
+    line-height: 40px;
 }
 .lines {
     position: absolute;
@@ -88,11 +91,15 @@
     top: 440px;
 }
 .line4, .line5 {
+    transform: rotate(37deg);
+    -ms-transform: rotate(37deg);
     -webkit-transform: rotate(37deg);
     top: 266px;
     margin-left: -30px;
 }
 .line5 {
+    transform: rotate(-37deg);
+    -ms-transform: rotate(-37deg);
     -webkit-transform: rotate(-37deg);
 }
 .topup {
