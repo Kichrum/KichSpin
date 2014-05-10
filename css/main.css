@@ -6,6 +6,7 @@
     background-image: url("../images/BG.png");
     height: 536px;
     width: 960px;
+    font: bold 26px "Purisa";
 }
 .symbols {
     display: none;
@@ -16,19 +17,19 @@
     margin: 20px 0;
 }
 .symbol1 {
-    background-image: url("../images/SYM1.png");
+    background-image: url("../images/SYM5.png");
 }
 .symbol2 {
-    background-image: url("../images/SYM6.png");
+    background-image: url("../images/SYM4.png");
 }
 .symbol3 {
     background-image: url("../images/SYM3.png");
 }
 .symbol4 {
-    background-image: url("../images/SYM4.png");
+    background-image: url("../images/SYM6.png");
 }
 .symbol5 {
-    background-image: url("../images/SYM5.png");
+    background-image: url("../images/SYM1.png");
 }
 .button {
     width: 98px;
@@ -58,11 +59,12 @@
     float: left;
 }
 .win {
-    margin: 70px 0 0 20px;
-    font: bold 26px "Purisa";
+    margin: 70px 0 0 10px;
     color: rgb(129, 255, 111);
     float: left;
     width: 152px;
+    vertical-align: top;
+    text-align: center;
 }
 .lines {
     position: absolute;
@@ -73,20 +75,35 @@
     width: 770px;
     height: 16px;
     display: none;
+    position: absolute;
 }
 .line1, .line2, .line3 {
-    margin-top: 93px;
+    top: 90px;
     background-size: 716px 16px;
 }
-.line2, .line3 {
-    margin-top: 156px;
+.line2 {
+    top: 265px;
 }
-.line4 {
+.line3 {
+    top: 440px;
+}
+.line4, .line5 {
     -webkit-transform: rotate(37deg);
-    margin-top: -176px;
+    top: 266px;
+    margin-left: -30px;
 }
 .line5 {
     -webkit-transform: rotate(-37deg);
-    margin-top: -13px;
-    margin-left: -42px;
+}
+.topup {
+    position: absolute;
+    background: #fff;
+    opacity: 0.8;
+    width: 500px;
+    text-align: center;
+    margin: 210px;
+    border: 2px solid black;
+    border-radius: 12px;
+    padding: 26px;
+    display: none;
 }

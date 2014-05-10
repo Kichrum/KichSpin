@@ -5,6 +5,13 @@
 $('document').ready(function() {
     fillColumns(true);
     setTimeout(switchButton, 3000);
+    $('.button').on('click', spin);
+    $(document).on('keyup', function(e) {
+        if ([32, 13].indexOf(e.keyCode) !== -1) {
+            spin(e);
+        }
+    });
+    $('.score').text(20);
 });
 
 var shuffle = function(o) {
@@ -39,17 +46,83 @@ var switchButton = function() {
     var $button = $('.button');
     if ($button.hasClass('disabled')) {
         $button.removeClass('disabled');
-        $('.button').on('click', spin);
     }
     else {
         $button.addClass('disabled');
-        $('.button').off('click');
     }
+};
+
+var animateWin = function(winSymbols, score) {
+    var winLinesClasses = [];
+    var winSymbolsClasses = [];
+    for (var i = 0; i < 5; i++) {
+        if (winSymbols[i] !== false) {
+            winLinesClasses.push('.line' + (i + 1));
+            winSymbolsClasses.push('.symbol' + winSymbols[i]);
+            score += 3;
+        }
+    }
+    var $lines = $(winLinesClasses.join(','));
+    var $symbols = $(winSymbolsClasses.join(','));
+    for (var i = 0; i < 5; i++) {
+        $lines.fadeTo(200, 0.1).fadeTo(200, 1.0);
+        $symbols.fadeTo(200, 0.1).fadeTo(200, 1.0);
+    }
+    $('.score').animate({fontSize: '150%'}, "slow", function() {
+        $(this).text(score)
+    }).animate({fontSize: '100%'}, "slow");
+    if (score < 1) {
+        switchButton();
+        $('.topup').fadeIn(200);
+    }
+};
+
+var calculateScore = function() {
+    var score = parseInt($('.score').text()) - 1;
+    var winSymbols = [];
+    $('.col').each(function(i, col) {
+        $('.symbol', col).each(function(j, symbol) {
+            var num = parseInt($(symbol).attr('class').split(' ')[1].replace('symbol', ''));
+            if ('undefined' === typeof winSymbols[j]) {
+                winSymbols[j] = num;
+            }
+            else if (winSymbols[j] !== num) {
+                winSymbols[j] = false;
+            }
+            if (i === j) {
+                if ('undefined' === typeof winSymbols[3]) {
+                    winSymbols[3] = num;
+                }
+                else if (winSymbols[3] !== num) {
+                    winSymbols[3] = false;
+                }
+            }
+            if (i + j === 2) {
+                if ('undefined' === typeof winSymbols[4]) {
+                    winSymbols[4] = num;
+                }
+                else if (winSymbols[4] !== num) {
+                    winSymbols[4] = false;
+                }
+            }
+            if (j > 1) {
+                return false;
+            }
+        });
+    });
+    setTimeout(function() {
+        animateWin(winSymbols, score)
+    }, 3000);
 };
 
 var spin = function(e) {
     e.preventDefault();
+    if ($('.button').hasClass('disabled')) {
+        return false;
+    }
     switchButton();
+    $('.line').fadeOut(200);
     fillColumns();
+    calculateScore();
     setTimeout(switchButton, 3000);
 };
