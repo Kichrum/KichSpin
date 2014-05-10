@@ -1,14 +1,14 @@
 /*
-    Author     : kichrum
-*/
+ Author     : kichrum
+ */
 
-$('document').ready(function(){
-    fillColumns();
+$('document').ready(function() {
+    fillColumns(true);
     $('.button').on('click', spin);
 });
 
-function shuffle(o){
-    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+var shuffle = function(o) {
+    for (var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
     return o;
 };
 
@@ -20,16 +20,18 @@ var cleanColumn = function($col) {
     });
 };
 
-var fillColumns = function() {
+var fillColumns = function(skipShuffle) {
     $('.col').each(function(j, col) {
         cleanColumn($(col));
-//        $(col).css('margin-top', '-1227px').css('height', '1228');
         $(col).css('margin-top', '-1750px').css('height', '1751');
-        var symbols = shuffle([1,2,3,4,5]);
-        for(var i = 0; i < 10; i++) {
-            $(col).prepend($('.symbols .symbol' + symbols[i%5]).clone());
+        var symbols = [1, 2, 3, 4, 5];
+        if (!skipShuffle) {
+            symbols = shuffle(symbols);
         }
-        $(col).animate({ marginTop: '0' }, 1000);
+        for (var i = 0; i < 10; i++) {
+            $(col).prepend($('.symbols .symbol' + symbols[i % 5]).clone());
+        }
+        $(col).animate({marginTop: '0'}, (j + 1) * 1000);
     });
 };
 
