@@ -35,7 +35,7 @@
     height: 98px;
     background-image: url("../images/BTN_Spin.png");
     display: block;
-    margin: 218px 0 0 37px;
+    margin: 218px 0 0 36px;
 }
 .button.disabled {
     background-image: url("../images/BTN_Spin_d.png");

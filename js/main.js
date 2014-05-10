@@ -4,7 +4,7 @@
 
 $('document').ready(function() {
     fillColumns(true);
-    $('.button').on('click', spin);
+    setTimeout(switchButton, 3000);
 });
 
 var shuffle = function(o) {
@@ -35,7 +35,21 @@ var fillColumns = function(skipShuffle) {
     });
 };
 
+var switchButton = function() {
+    var $button = $('.button');
+    if ($button.hasClass('disabled')) {
+        $button.removeClass('disabled');
+        $('.button').on('click', spin);
+    }
+    else {
+        $button.addClass('disabled');
+        $('.button').off('click');
+    }
+};
+
 var spin = function(e) {
     e.preventDefault();
+    switchButton();
     fillColumns();
+    setTimeout(switchButton, 3000);
 };
